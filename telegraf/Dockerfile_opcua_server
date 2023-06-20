@@ -1,0 +1,12 @@
+# Dockerfile_dummy_sensor
+
+FROM python:3.9
+
+WORKDIR /app
+
+COPY opcua_server.py .
+
+RUN pip install opcua
+
+CMD ["python", "opcua_server.py"]
+

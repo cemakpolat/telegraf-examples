@@ -1,0 +1,15 @@
+# Dockerfile_snmp_agent
+
+FROM debian:latest
+
+RUN apt-get update && apt-get install -y snmp snmpd
+
+# Copy the SNMP agent configuration file
+COPY snmpd.conf /etc/snmp/snmpd.conf
+
+# Expose the SNMP port
+EXPOSE 161/udp
+
+# Start the SNMP agent service
+CMD ["snmpd", "-f", "-Lo", "-C", "-c", "/etc/snmp/snmpd.conf"]
+

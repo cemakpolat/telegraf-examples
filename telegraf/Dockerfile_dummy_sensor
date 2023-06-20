@@ -1,0 +1,12 @@
+# Dockerfile_dummy_sensor
+
+FROM python:3.9
+
+WORKDIR /app
+
+COPY dummy_sensor.py .
+
+RUN pip install paho-mqtt psutil
+
+CMD ["python", "dummy_sensor.py"]
+
